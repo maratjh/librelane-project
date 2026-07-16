@@ -1,0 +1,11 @@
+run_id,clock_period,config_generated,execution_attempted,return_code,reports_found,metrics_parsed,status,config_path,report_paths,notes
+clock_8,8,yes,yes,1,no,no,execution_failed,designs/pm32/config_clock8.json,,LibreLane flow failed: timing too aggressive for tool convergence. LibreLane v3.0.3.
+clock_10,10,yes,yes,1,no,no,execution_failed,designs/pm32/config_clock10.json,,LibreLane flow failed: timing too aggressive for tool convergence. LibreLane v3.0.3.
+clock_11,11,yes,yes,0,yes,yes,completed,designs/pm32/config_clock11.json,results/important_reports/metrics_clock11.json;results/important_reports/summary_clock11.rpt,Borderline run. Small positive setup margin (WS=1.237). LibreLane v3.0.3.
+clock_12,12,yes,yes,0,yes,yes,completed,designs/pm32/config_clock12.json,results/important_reports/metrics_clock12.json;results/important_reports/summary_clock12.rpt,Aggressive run. Small setup margin (WS=3.237). LibreLane v3.0.3.
+clock_15,15,yes,no,,no,no,config_only,designs/pm32/config_clock15.json,,Configuration generated.
+clock_18,18,yes,no,,no,no,config_only,designs/pm32/config_clock18.json,,Configuration generated.
+clock_20,20,yes,no,,no,no,config_only,designs/pm32/config_clock20.json,,Configuration generated.
+clock_22,22,yes,no,,no,no,config_only,designs/pm32/config_clock22.json,,Configuration generated.
+clock_25,25,yes,yes,0,yes,yes,completed,designs/pm32/config_clock25.json,results/important_reports/metrics_run1.json;results/important_reports/summary_run1.rpt,Baseline run. Large setup margin (WS=13.237). Reports from prior execution.
+clock_30,30,yes,yes,0,yes,yes,completed,designs/pm32/config_clock30.json,results/important_reports/metrics_run2.json;results/important_reports/summary_run2.rpt,Relaxed clock. Very large setup margin (WS=17.237). Reports from prior execution.

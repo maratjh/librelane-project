@@ -1,0 +1,33 @@
+{
+  "description": "Mapping of report artifacts to LibreLane run IDs.",
+  "mappings": [
+    {
+      "run_id": "clock_11",
+      "clock_period": 11,
+      "metrics_json": "metrics_clock11.json",
+      "summary_rpt": "summary_clock11.rpt",
+      "note": "Very aggressive clock. Setup WS=1.237 (borderline margin). LibreLane v3.0.3."
+    },
+    {
+      "run_id": "clock_12",
+      "clock_period": 12,
+      "metrics_json": "metrics_clock12.json",
+      "summary_rpt": "summary_clock12.rpt",
+      "note": "Aggressive clock. Setup WS=3.237 (small margin). LibreLane v3.0.3."
+    },
+    {
+      "run_id": "clock_25",
+      "clock_period": 25,
+      "metrics_json": "metrics_run1.json",
+      "summary_rpt": "summary_run1.rpt",
+      "note": "Baseline run. Setup WS=13.2371 confirms CLOCK_PERIOD=25."
+    },
+    {
+      "run_id": "clock_30",
+      "clock_period": 30,
+      "metrics_json": "metrics_run2.json",
+      "summary_rpt": "summary_run2.rpt",
+      "note": "Relaxed clock. Setup WS=17.2371 confirms CLOCK_PERIOD=30."
+    }
+  ]
+}

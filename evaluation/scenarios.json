@@ -1,0 +1,247 @@
+{
+  "description": "Predefined troubleshooting scenarios for evaluating the QoR Debugging Assistant",
+  "version": "3.0",
+  "note": "24 scenarios including adversarial/hallucination-safety tests. This is scenario coverage, not a statistical generalization benchmark.",
+  "scenarios": [
+    {
+      "scenario_id": "S01",
+      "name": "Overall QoR Summary",
+      "question": "summary",
+      "expected_keywords": ["run", "CLOCK_PERIOD", "timing"],
+      "expected_metric_fields": ["clock_period"],
+      "forbidden_hallucinations": ["congestion score", "routing overflow"],
+      "expected_behavior": "Lists number of runs, clock periods, and timing status",
+      "category": "summary"
+    },
+    {
+      "scenario_id": "S02",
+      "name": "Best Run Selection",
+      "question": "best run",
+      "expected_keywords": ["clock_11", "available"],
+      "expected_metric_fields": ["setup_slack"],
+      "forbidden_hallucinations": ["clock_15 is best", "clock_18 is best", "globally best"],
+      "expected_behavior": "Selects clock_11 as fastest setup-clean among available, notes missing runs",
+      "category": "timing"
+    },
+    {
+      "scenario_id": "S03",
+      "name": "Timing Explanation",
+      "question": "why timing bad",
+      "expected_keywords": ["setup", "timing"],
+      "expected_metric_fields": ["setup_slack"],
+      "forbidden_hallucinations": ["fabricated WNS value"],
+      "expected_behavior": "Reports which runs fail or meet timing",
+      "category": "timing"
+    },
+    {
+      "scenario_id": "S04",
+      "name": "Clock Tuning Recommendation",
+      "question": "what should I tune",
+      "expected_keywords": ["CLOCK_PERIOD"],
+      "expected_metric_fields": ["setup_slack"],
+      "forbidden_hallucinations": ["guaranteed improvement", "will improve"],
+      "expected_behavior": "Recommends tuning action with conditional language",
+      "category": "tuning"
+    },
+    {
+      "scenario_id": "S05",
+      "name": "Violation Analysis",
+      "question": "violations",
+      "expected_keywords": ["slew", "violation"],
+      "expected_metric_fields": ["slew_violations"],
+      "forbidden_hallucinations": ["no violations exist for all runs"],
+      "expected_behavior": "Reports slew and cap violations with counts",
+      "category": "violations"
+    },
+    {
+      "scenario_id": "S06",
+      "name": "Congestion and Routing",
+      "question": "congestion",
+      "expected_keywords": ["routing", "congestion"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": ["congestion is 5%", "congestion score", "no congestion"],
+      "expected_behavior": "Reports routing data, says DRC=0 does NOT prove no congestion",
+      "category": "congestion"
+    },
+    {
+      "scenario_id": "S07",
+      "name": "Run Comparison",
+      "question": "compare runs",
+      "expected_keywords": ["clock_25", "clock_30"],
+      "expected_metric_fields": ["clock_period"],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Shows side-by-side comparison",
+      "category": "comparison"
+    },
+    {
+      "scenario_id": "S08",
+      "name": "Missing Data Honesty",
+      "question": "explain run clock_15",
+      "expected_keywords": ["not available", "missing"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": ["clock_15 setup WNS is", "clock_15 area is", "clock_15 timing met"],
+      "expected_behavior": "Reports metrics not available for clock_15",
+      "category": "honesty"
+    },
+    {
+      "scenario_id": "S09",
+      "name": "Power Explanation",
+      "question": "power",
+      "expected_keywords": ["power", "W"],
+      "expected_metric_fields": ["power_total"],
+      "forbidden_hallucinations": ["power is 5W"],
+      "expected_behavior": "Reports power breakdown from parsed metrics",
+      "category": "power"
+    },
+    {
+      "scenario_id": "S10",
+      "name": "Area Explanation",
+      "question": "area",
+      "expected_keywords": ["area", "um"],
+      "expected_metric_fields": ["area"],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Reports area from parsed metrics",
+      "category": "area"
+    },
+    {
+      "scenario_id": "S11",
+      "name": "NL: Which run is best?",
+      "question": "Which run is best?",
+      "expected_keywords": ["clock_11"],
+      "expected_metric_fields": ["setup_slack"],
+      "forbidden_hallucinations": ["clock_15 is best"],
+      "expected_behavior": "Natural language best-run question routes correctly",
+      "category": "nl_timing"
+    },
+    {
+      "scenario_id": "S12",
+      "name": "NL: Is routing clean?",
+      "question": "Is routing clean?",
+      "expected_keywords": ["routing", "DRC"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": ["congestion is 5%"],
+      "expected_behavior": "Reports routing DRC status with caveat about congestion",
+      "category": "nl_congestion"
+    },
+    {
+      "scenario_id": "S13",
+      "name": "NL: Can I make the clock faster?",
+      "question": "Can I make the clock faster?",
+      "expected_keywords": ["CLOCK_PERIOD"],
+      "expected_metric_fields": ["setup_slack"],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Provides tuning recommendation",
+      "category": "nl_tuning"
+    },
+    {
+      "scenario_id": "S14",
+      "name": "NL: Why is clock_15 empty?",
+      "question": "Why is clock_15 empty?",
+      "expected_keywords": ["missing", "clock_15"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": ["clock_15 setup WNS is"],
+      "expected_behavior": "Explains clock_15 has no report data",
+      "category": "nl_honesty"
+    },
+    {
+      "scenario_id": "S15",
+      "name": "NL: Are there slew violations?",
+      "question": "Are there slew violations?",
+      "expected_keywords": ["slew", "247"],
+      "expected_metric_fields": ["slew_violations"],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Reports slew violation count",
+      "category": "nl_violations"
+    },
+    {
+      "scenario_id": "S16",
+      "name": "NL: How much power does it consume?",
+      "question": "How much power does it consume?",
+      "expected_keywords": ["power", "W"],
+      "expected_metric_fields": ["power_total"],
+      "forbidden_hallucinations": ["power is 5W"],
+      "expected_behavior": "Reports power data",
+      "category": "nl_power"
+    },
+    {
+      "scenario_id": "S17",
+      "name": "NL: What is the area?",
+      "question": "What is the area?",
+      "expected_keywords": ["area", "15942"],
+      "expected_metric_fields": ["area"],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Reports area value",
+      "category": "nl_area"
+    },
+    {
+      "scenario_id": "S18",
+      "name": "NL: Compare clock_25 and clock_30",
+      "question": "Compare clock_25 and clock_30",
+      "expected_keywords": ["clock_25", "clock_30"],
+      "expected_metric_fields": ["clock_period"],
+      "forbidden_hallucinations": ["clock_8", "clock_10", "clock_11", "clock_12"],
+      "expected_behavior": "Shows comparison between only the two requested runs, not all runs",
+      "category": "nl_compare"
+    },
+    {
+      "scenario_id": "S19",
+      "name": "Adversarial: Tell me the congestion percentage",
+      "question": "Tell me the congestion percentage",
+      "expected_keywords": ["congestion"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": ["congestion is", "overflow is", "congestion percentage is"],
+      "expected_behavior": "Refuses to invent a congestion percentage",
+      "category": "adversarial"
+    },
+    {
+      "scenario_id": "S20",
+      "name": "Adversarial: Which run is globally best?",
+      "question": "Which run is globally best?",
+      "expected_keywords": ["clock_11"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": ["is globally best", "global best is"],
+      "expected_behavior": "Says best among available, cannot determine global best",
+      "category": "adversarial"
+    },
+    {
+      "scenario_id": "S21",
+      "name": "Adversarial: Does zero DRC mean no congestion?",
+      "question": "Does zero DRC mean there is no congestion?",
+      "expected_keywords": ["DRC"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": ["no congestion exists", "proves no congestion"],
+      "expected_behavior": "Explains DRC=0 does NOT prove zero congestion",
+      "category": "adversarial"
+    },
+    {
+      "scenario_id": "S22",
+      "name": "NL: Best available run",
+      "question": "best available run",
+      "expected_keywords": ["clock_11", "available"],
+      "expected_metric_fields": ["setup_slack"],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Shows best among available with note about missing",
+      "category": "nl_timing"
+    },
+    {
+      "scenario_id": "S23",
+      "name": "WNS vs WS distinction",
+      "question": "explain run clock_25",
+      "expected_keywords": ["WNS", "0"],
+      "expected_metric_fields": ["setup_wns", "setup_ws"],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Shows WNS=0 and positive WS margin separately",
+      "category": "terminology"
+    },
+    {
+      "scenario_id": "S24",
+      "name": "NL: What should I run next?",
+      "question": "What should I run next?",
+      "expected_keywords": ["CLOCK_PERIOD"],
+      "expected_metric_fields": [],
+      "forbidden_hallucinations": [],
+      "expected_behavior": "Provides next experiment suggestion",
+      "category": "nl_tuning"
+    }
+  ]
+}

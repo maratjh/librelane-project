@@ -1,0 +1,38 @@
+{
+  "description": "Environment metadata for reproducibility. Where exact versions were not recorded during original runs, this is stated explicitly.",
+  "python": {
+    "minimum_version": "3.8",
+    "tested_versions": ["3.10", "3.11"],
+    "dependencies": "none (stdlib only)"
+  },
+  "librelane": {
+    "version": "not recorded for original run",
+    "note": "Only needed for running actual ASIC flows, not for parsing or assistant"
+  },
+  "openroad": {
+    "version": "not recorded for original run"
+  },
+  "pdk": {
+    "name": "sky130",
+    "standard_cell_library": "sky130_fd_sc_hd",
+    "version": "not recorded for original run"
+  },
+  "docker": {
+    "image": "not recorded for original run",
+    "note": "LibreLane execution used Docker; exact image not preserved"
+  },
+  "operating_system": {
+    "report_generation": "Linux (Docker)",
+    "assistant_development": "cross-platform (Windows, Linux, macOS)"
+  },
+  "reports_available": {
+    "clock_25": true,
+    "clock_30": true,
+    "clock_15": false,
+    "clock_18": false,
+    "clock_20": false,
+    "clock_22": false
+  },
+  "flow_command_template": "librelane --dockerized <config.json>",
+  "random_seed": "not applicable (deterministic synthesis flow)"
+}

@@ -1,0 +1,4 @@
+# No third-party Python packages are required for the core CLI assistant.
+# The following are optional for the web UI:
+# streamlit
+# pandas

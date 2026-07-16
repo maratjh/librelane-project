@@ -1,0 +1,34 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment and secrets
+.env
+.env.*
+
+# LibreLane run artifacts (large, regenerable)
+designs/pm32/runs/
+*.log
+results/*.log
+
+# Binary/ASIC artifacts
+*.odb
+*.def
+*.gds
+*.sdf
+*.spef
+*.vcd
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
+*.swp
+*.swo
+
+# PDF lecture materials (not part of project deliverable)
+*.pdf
+!docs/*.pdf
